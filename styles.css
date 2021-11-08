@@ -1,0 +1,544 @@
+/*to remove default styling of browser
+  using this (*) we can remove unwanted spacing*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* for box-model*/
+}
+
+body {
+  font-family: "Merriweather", serif;
+  background-color: #ebf2ff; /*HEX value*/
+  overflow-x: hidden; /*just to be safe if overflow happens*/
+  transition: all o.5s; /* all elements transistion takes place in 0.5s*/
+}
+
+/* removing navbar button default styling */
+button {
+  background-color: transparent;
+  border: none;
+}
+input {
+  background-color: transparent;
+  border: none;
+}
+ul {
+  list-style-type: none;
+}
+/*giving margin to section makes sure each section have space between other section and btw navbar and hero container section */
+section {
+  margin: 20px 0;
+}
+
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto; /*auto helps content automatically allign to center*/
+}
+
+/*navbar*/
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex; /*to display elements horizondally*/
+  justify-content: space-between;
+  align-items: center; /*in navbar it takes exact center not top or bottom*/
+  background-color: #f9fafc;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  z-index: 9999;
+  padding: 0 18px;
+}
+
+/*mentioning width here helps increase nav bar broadness
+  doing this in navbar class then size of entire navbar reduces*/
+.navbar__brand {
+  /*navbar logo*/
+  width: 100px;
+}
+
+.brand__logo {
+  /*the logo image is inside div so giving 100% height and width fills the entire div space allocated*/
+  width: 100%;
+  height: 100%;
+}
+
+.primary__button {
+  /*linear gradient is used to add and merge color in different sides*/
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #dd2476 51%,
+    #ff512f 100%
+  );
+  /*200%- height of button 
+    auto- width */
+  background-size: 200% auto; /*since background image is there to get the hover gradient effect we need to mention baground size (ie) for how much width the gradient needs to change */
+  transition: 1s;
+  border-radius: 4px;
+  text-align: center;
+  text-transform: capitalize;
+  color: white;
+  padding: 10px;
+  box-shadow: 0 0 20px #eee;
+  cursor: pointer;
+}
+.primary__button:hover {
+  /*the gradient is applied to right so when we hover color movers from right to center*/
+  background-position: right center;
+  color: white;
+}
+/**/
+.hide__mobile {
+  display: none !important;
+}
+.hamburger__menu > div {
+  width: 35px;
+  height: 5px;
+  background-color: #f9fafc;
+  margin: 6px 0;
+}
+div {
+  display: block;
+}
+
+/**/
+.hero__image__container {
+  position: relative; /*if hero container is relative the 3 hero images can have position absolute so all 3 come in one place*/
+  width: 100%; /*to take up all width of hero container*/
+}
+
+.hero__image {
+  position: absolute;
+  width: 100%;
+  right: auto;
+  left: auto; /*for image to be in center only for mobile devices*/
+  z-index: 3;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.hero__image__shape {
+  position: absolute;
+  right: 2; /*it moves little right and bottom to hero image*/
+  z-index: 2;
+}
+/*no need to style 2nd background hero image becoz it falss in its place*/
+
+.hero__description {
+  display: flex;
+  flex-direction: column; /*button comes below text in proper alignment*/
+  gap: 15px; /*provides space between button and content*/
+  align-items: flex-start; /*button was exactly center to content so using flex start it comes to left corner*/
+}
+/*since same design as order food so using same class name for order now button */
+
+.text__heading {
+  font-size: 1.875rem; /*rem- combination of pixels. 1rem=16 pixels */
+  line-height: 2.25rem; /*space between lines in text*/
+  color: #1d3557;
+  font-weight: bold;
+}
+
+.video__footage__container {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.video__footage {
+  position: relative; /*relative here so the background shape can have absolute */
+}
+
+.video__footage::before {
+  content: "";
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #dd2476 51%,
+    #ff512f 100%
+  );
+  position: absolute;
+  top: 0; /*top and left zero which makes it allign in center*/
+  left: 0;
+  /*without translate the shape will completely cover behind video. so 1 rem in x axis
+  moves it right and 1 rem in y axis moves it to bottom. if we put -1rem it goes top and left*/
+  transform: translate(1rem, 1rem);
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+.chef__video {
+  width: 100%; /*we need to provide 100 percent height and width so it takes up full space of div container and not some random values*/
+  height: 100%;
+}
+
+.video__footage__text {
+  margin-top: 2rem;
+  color: #1d3557;
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.food__list__container {
+  margin: 2rem 0; /*only for mobile*/
+  width: 100%;
+  position: relative;
+}
+/*for styling text heading (explore) same styling used for hero text is used so we use same class name so that no need to do seperate styling*/
+
+.food__menu__card {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  width: 100%;
+  border-radius: 6px; /*for mobile devices alone lower side no border radius. this for row display of menu card items*/
+}
+.food__menu__card__image {
+  width: 100%;
+  border-radius: 6px 6px 0 0; /*top left and right-6px. bottom left and right- 0px*/
+}
+
+.food__menu__card__title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #1d3557;
+  font-weight: 700;
+}
+
+.food__menu__card__restaurants {
+  text-align: left;
+  color: #1d3557;
+}
+
+.food__menu__card__description {
+  padding: 1rem;
+}
+
+.food__menu__card__list {
+  margin: 1rem 0; /*so that even explore menu has gap top and bottom*/
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.restaurant__list__container {
+  margin-top: 3rem;
+}
+
+.restaurant__list__text {
+  margin: 1rem 0;
+}
+
+.restaurant__list__image__container {
+  width: 100%;
+}
+
+.restaurant__list__row__1 {
+  display: flex;
+  align-items: baseline;
+}
+.restaurant__list__row__2 {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+  flex-direction: row-reverse;
+}
+.restaurant1,
+.restaurant3 {
+  border-radius: 4px;
+  margin: 0 5px;
+  width: 150px;
+  height: 80px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+.restaurant2,
+.restaurant4 {
+  border-radius: 4px;
+  margin: 0 5px;
+  width: 200px;
+  height: 100px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+}
+
+.email__subcription__input__field {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+}
+.email__subcription__input__box {
+  border: 1px solid #ee89a0;
+  background-color: #fcedf0;
+  color: #1d3557;
+  font-weight: 700;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+}
+.email__subcription__container {
+  margin-top: 3rem;
+  width: 100%;
+  padding: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.quote__container__text {
+  color: #fff;
+  text-align: center;
+  margin: 0 1rem;
+  z-index: 3;
+}
+
+.quote__container__image {
+  width: 100%;
+  height: 200px;
+  background-color: #0a4065;
+  opacity: 49%;
+  border-radius: 13px;
+  position: absolute;
+}
+
+.quote__container {
+  position: relative;
+  margin-top: 4rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  border-radius: 13px;
+  background: url(https://images.unsplash.com/photo-1522336572468-97b06e8ef143?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80)
+    center center / cover no-repeat;
+  /**/
+}
+.footer__container__image {
+  /*to change any image or logo color use filter*/
+  filter: brightness(0) invert(1);
+  width: 300px;
+}
+.footer__container__list {
+  color: white;
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem 1rem 0 0;
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #dd2476 51%,
+    #ff512f 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .primary__button {
+    padding: 10px 15px;
+    font-weight: bold;
+  }
+  .hero__container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  .text__heading {
+    font-size: 2rem;
+    font-weight: 900;
+  }
+  .hero__image {
+    margin-top: 2rem;
+  }
+  .video__footage__text {
+    margin-left: 2rem;
+    width: 50%;
+  }
+  .video__footage__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .food__menu__card__list {
+    display: flex;
+    flex-direction: row;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    /*for explore menu text allign center is used as inline styling*/
+  }
+
+  .food__menu__card:nth-child(2) {
+    margin-top: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+  }
+
+  .food__list__container__diagonal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform: skewY(-5deg);
+    /*basically the diagonal is a rectangle this skewy tilts it to 5 degrees*/
+
+    background-image: linear-gradient(
+      to right,
+      #ff512f 0%,
+      #dd2476 51%,
+      #ff512f 100%
+    );
+    z-index: -3;
+  }
+
+  .food__list__container {
+    margin: 5rem 0;
+  }
+
+  .restaurant__list__container {
+    display: flex;
+    align-items: center;
+  }
+  .restaurant__list__text {
+    width: 100%;
+  }
+
+  .restaurant__list__row_1 {
+    justify-content: center;
+  }
+  .restaurant__list__row_2 {
+    margin-top: 3px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .email__subcription__input__box {
+    width: 20rem;
+  }
+  .email__subcription__container {
+    display: flex;
+    justify-content: center;
+  }
+  .quote__container__image {
+    height: 300px;
+    width: 100%;
+  }
+
+  .quote__container {
+    height: 300px;
+    width: 100%;
+  }
+  .quote__container__text {
+    color: #fff;
+    z-index: 3;
+    margin: 0 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .footer__container {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding: 0 50px;
+  }
+
+  .navbar__brand {
+    width: 150px;
+  }
+  .primary__button {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 20px;
+  }
+
+  .container {
+    max-width: 950px;
+  }
+  .text__heading {
+    font-size: 3rem;
+    line-height: 3.2rem;
+  }
+  .video__footage__text {
+    width: 57%;
+  }
+  .video__footage__container {
+    display: flex;
+    flex-direction: column;
+  }
+  .restaurant1,
+  .restaurant3 {
+    border-radius: 4px;
+    margin: 0 5px;
+    width: 210px;
+    height: 140px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
+      0 4px 6px -2px rgb(0 0 0 / 5%);
+  }
+  .restaurant2,
+  .restaurant4 {
+    border-radius: 4px;
+    margin: 0 5px;
+    width: 250px;
+    height: 180px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
+      0 4px 6px -2px rgb(0 0 0 / 5%);
+  }
+
+  .email__subcription__input__box {
+    padding: 0.7rem 0.5rem;
+  }
+
+  .email__subcription__input__box {
+    width: 22rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1150px;
+  }
+
+  .restaurant1,
+  .restaurant3 {
+    border-radius: 4px;
+    margin: 0 5px;
+    width: 250px;
+    height: 180px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
+      0 4px 6px -2px rgb(0 0 0 / 5%);
+  }
+  .restaurant2,
+  .restaurant4 {
+    border-radius: 4px;
+    margin: 0 5px;
+    width: 300px;
+    height: 260px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
+      0 4px 6px -2px rgb(0 0 0 / 5%);
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1220px;
+  }
+  .quote__container__text {
+    width: 93%;
+  }
+}
